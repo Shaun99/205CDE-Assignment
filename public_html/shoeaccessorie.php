@@ -117,17 +117,17 @@
             if($conn = mysqli_connect('localhost', 'root', '', 'the_fashion_shop')) {
 
             $sql = "SELECT * FROM item WHERE category = 2;";
-
             if($result = mysqli_query($conn, $sql)) {
-
-                echo '<div class="card">';
-                        while($row = mysqli_fetch_assoc($result)) {
-                            echo '<h2>'. $row['name'] .'</h2>';
-                            echo '<p class="price"> RM'. $row['price'] .'</p>';
-                            echo '<p>'. $row['description'] .'</p>';
-                            echo '<p><a href="addToCart.php?id='. $row['id'] .'"><button>Add to Cart</button></a></p>';
-                        }
-                echo '</div>';
+       
+                while($row = mysqli_fetch_assoc($result)) {
+                    echo '<div class="card">';
+                        echo '<img src="img/'.$row['image'].'" style="width:100%">';
+                        echo '<h2>'. $row['name'] .'</h2>';
+                        echo '<p class="price"> RM'. $row['price'] .'</p>';
+                        echo '<p><a href="addToCart.php?id='. $row['item_id'] .'"><button><b>View</b></button></a></p>';
+                    echo '</div>';
+                }
+                            
             }
         }
         ?>
